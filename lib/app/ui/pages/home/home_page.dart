@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import '../../../domain/entities/counter.dart';
+
+import 'widgets/cronometro.dart';
+import 'widgets/entrada_tempo.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,32 +13,32 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    final store = Counter();
-
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home Page'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              'You have pushed the button this many times:',
+    return const Scaffold(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(
+            child: SizedBox(
+              child: Cronometro(),
             ),
-            Observer(
-              builder: (_) => Text(
-                '${store.contador}',
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 40),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                EntradaTempo(
+                  title: 'Trabalho',
+                  valuer: 25,
+                ),
+                EntradaTempo(
+                  title: 'Descanso',
+                  valuer: 5,
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: store.incrementar,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+          )
+        ],
       ),
     );
   }

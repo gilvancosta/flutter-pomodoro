@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       // retirar banner de debug
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
         useMaterial3: true,
       ),
       home: const HomePage(),
